@@ -1,4 +1,5 @@
-﻿using APDotNetCoreConsoleApp;
+﻿using APDotNetCoreConsoleApp.Dtos;
+using APDotNetCoreConsoleApp.Services;
 using Dapper;
 using System;
 using System.Collections.Generic;
@@ -9,11 +10,12 @@ using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace APDotNetCoreConsoleApp
+namespace APDotNetCoreConsoleApp.DapperExamples
 {
     public class DapperExample
     {
-        public void Run() {
+        public void Run()
+        {
             // Read();
             // Edit(1);
             // Edit(11);
@@ -21,9 +23,10 @@ namespace APDotNetCoreConsoleApp
             //Update(10,"titleTest2", "AuthorTest2", "ContentTest2");
             Delete(10);
         }
-        public void Read() {
-           using IDbConnection db = new SqlConnection(ConnectionStrings.SqlConnectionStringBuilder.ConnectionString);
-           List<BlogDto> lst = db.Query<BlogDto>("Select * from tbl_blog").ToList();
+        public void Read()
+        {
+            using IDbConnection db = new SqlConnection(ConnectionStrings.SqlConnectionStringBuilder.ConnectionString);
+            List<BlogDto> lst = db.Query<BlogDto>("Select * from tbl_blog").ToList();
             //dynamic => can be anything lst[0] = fasgkbka();
 
             foreach (BlogDto item in lst)
@@ -44,14 +47,15 @@ namespace APDotNetCoreConsoleApp
             //C# 'var' not effect on the memory but 'var' effect on the javascript
 
             //if(item == null){} //old version
-            if(item is null) 
+            if (item is null)
             {
                 Console.WriteLine("No data found.");
                 return;
             }
 
         }
-        public void Create(string title, string author, string content) {
+        public void Create(string title, string author, string content)
+        {
             var item = new BlogDto()
             {
                 BlogTitle = title,
@@ -72,7 +76,7 @@ namespace APDotNetCoreConsoleApp
             string message = result > 0 ? "Saving Successful" : "Saving Failed";
             Console.WriteLine(message);
         }
-        public void Update(int id,string title, string author, string content)
+        public void Update(int id, string title, string author, string content)
         {
             var item = new BlogDto()
             {
@@ -107,6 +111,6 @@ namespace APDotNetCoreConsoleApp
 
         }
     }
-    
+
 }
 

@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace APDotNetCoreConsoleApp
+namespace APDotNetTrainingBatch4.RestApi
 {
     internal class ConnectionStrings
     {
@@ -15,7 +15,8 @@ namespace APDotNetCoreConsoleApp
             DataSource = ".",
             InitialCatalog = "DotNetTrainingBatch4",
             UserID = "sa",
-            Password = "12345"
+            Password = "12345",
+            TrustServerCertificate = true
         };
     }
 }

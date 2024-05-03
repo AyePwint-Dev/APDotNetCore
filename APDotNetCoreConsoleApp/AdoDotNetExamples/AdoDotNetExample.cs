@@ -7,7 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Security.Cryptography.X509Certificates;
 
-namespace APDotNetCoreConsoleApp
+namespace APDotNetCoreConsoleApp.AdoDotNetExamples
 {
     internal class AdoDotNetExample
     {
@@ -19,7 +19,7 @@ namespace APDotNetCoreConsoleApp
             Password = "12345"
         };
         public void Read()
-        {                     
+        {
             SqlConnection connection = new SqlConnection(_sqlConnectionStringBuilder.ConnectionString);
 
             connection.Open();
@@ -43,7 +43,7 @@ namespace APDotNetCoreConsoleApp
                 Console.WriteLine(dr["BlogContent"]);
                 Console.WriteLine("-------------------------");
             }
-           
+
         }
         public void Create(string title, string author, string content)
         {
@@ -58,10 +58,10 @@ namespace APDotNetCoreConsoleApp
                                (@BlogTitle
                                ,@BlogAuthor
                                ,@BlogContent)";
-            SqlCommand cmd =new SqlCommand(query,connection);
+            SqlCommand cmd = new SqlCommand(query, connection);
             cmd.Parameters.AddWithValue("@BlogTitle", title);
-            cmd.Parameters.AddWithValue ("@BlogAuthor", author);
-            cmd.Parameters.AddWithValue("@BlogContent", content);            
+            cmd.Parameters.AddWithValue("@BlogAuthor", author);
+            cmd.Parameters.AddWithValue("@BlogContent", content);
             int result = cmd.ExecuteNonQuery();
 
             connection.Close();
@@ -70,17 +70,17 @@ namespace APDotNetCoreConsoleApp
             Console.WriteLine(message);
         }
 
-        public void Update(int id,string title, string author, string content)
+        public void Update(int id, string title, string author, string content)
         {
-            SqlConnection connection=new SqlConnection(_sqlConnectionStringBuilder.ConnectionString);
+            SqlConnection connection = new SqlConnection(_sqlConnectionStringBuilder.ConnectionString);
             connection.Open();
             string query = @"UPDATE[dbo].[Tbl_Blog]
                              SET[BlogTitle] = @BlogTitle
                                   ,[BlogAuthor] = @BlogAuthor
                                   ,[BlogContent] = @BlogContent
                               WHERE BlogId = @BlogId";
-            
-            SqlCommand cmd = new SqlCommand(query,connection);
+
+            SqlCommand cmd = new SqlCommand(query, connection);
             cmd.Parameters.AddWithValue("@BlogId", id);
             cmd.Parameters.AddWithValue("@BlogTitle", title);
             cmd.Parameters.AddWithValue("@BlogAuthor", author);
@@ -93,16 +93,16 @@ namespace APDotNetCoreConsoleApp
         }
         public void Delete(int id)
         {
-            SqlConnection  connection=new SqlConnection(_sqlConnectionStringBuilder.ConnectionString);
-            connection.Open ();
+            SqlConnection connection = new SqlConnection(_sqlConnectionStringBuilder.ConnectionString);
+            connection.Open();
 
             string query = @"DELETE FROM [dbo].[Tbl_Blog]
                              WHERE BlogId = @BlogId";
-            SqlCommand cmd = new SqlCommand(query,connection);
+            SqlCommand cmd = new SqlCommand(query, connection);
             cmd.Parameters.AddWithValue("@BlogId", id);
             int result = cmd.ExecuteNonQuery();
             connection.Close();
-            string message =  result >0 ? "Delete Successful" : "Delete Failed";
+            string message = result > 0 ? "Delete Successful" : "Delete Failed";
             Console.WriteLine(message);
 
         }
@@ -118,7 +118,7 @@ namespace APDotNetCoreConsoleApp
             SqlDataAdapter sqlDataAdapter = new SqlDataAdapter(cmd);
             DataTable dt = new DataTable();
             sqlDataAdapter.Fill(dt);
-            connection.Close();           
+            connection.Close();
 
             if (dt.Rows.Count == 0)
             {
