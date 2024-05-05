@@ -21,3 +21,5 @@ Post => create
 Put => update whole object
 Patch => update specified  object
 Delete => delete object (no need Json body testing from postman)
+
+Day 6 Web API with Dapper
