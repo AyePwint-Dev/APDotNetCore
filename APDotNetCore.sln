@@ -10,7 +10,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Documents", "Documents", "{
 		README.md = README.md
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "APDotNetTrainingBatch4.RestApi", "APDotNetTrainingBatch4.RestApi\APDotNetTrainingBatch4.RestApi.csproj", "{450F16C1-E044-4096-AD45-07184549F4BC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "APDotNetTrainingBatch4.RestApi", "APDotNetTrainingBatch4.RestApi\APDotNetTrainingBatch4.RestApi.csproj", "{450F16C1-E044-4096-AD45-07184549F4BC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DotNetTrainingBatch4.Shared", "DotNetTrainingBatch4.Shared\DotNetTrainingBatch4.Shared.csproj", "{64647F58-BCB6-4376-B7FA-75C7134266B1}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -26,6 +28,10 @@ Global
 		{450F16C1-E044-4096-AD45-07184549F4BC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{450F16C1-E044-4096-AD45-07184549F4BC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{450F16C1-E044-4096-AD45-07184549F4BC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{64647F58-BCB6-4376-B7FA-75C7134266B1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{64647F58-BCB6-4376-B7FA-75C7134266B1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{64647F58-BCB6-4376-B7FA-75C7134266B1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{64647F58-BCB6-4376-B7FA-75C7134266B1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
