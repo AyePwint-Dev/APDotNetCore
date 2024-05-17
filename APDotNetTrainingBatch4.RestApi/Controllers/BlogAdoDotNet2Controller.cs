@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Data.SqlClient;
 using System.Data;
+using System.Reflection.Metadata;
 using static APDotNetTrainingBatch4.Shared.AdoDotNetService;
 
 namespace APDotNetTrainingBatch4.RestApi.Controllers
@@ -33,14 +34,12 @@ namespace APDotNetTrainingBatch4.RestApi.Controllers
             //var lst = _adoDotNetService.Query<BlogModel>(query, parameters);
 
             //# Add multiple params with ','
-            var item = _adoDotNetService.QueryFirstOrDefault<BlogModel>(query, new AdoDotNetRequestParameter("@BlogId", id));
-                        
+            //var item = _adoDotNetService.QueryFirstOrDefault<BlogModel>(query, new AdoDotNetRequestParameter("@BlogId", id));
+            var item = FindById(id);
 
             if( item is not null) {                 
                 return Ok(item); 
             }
-
-
             return NotFound("No Data Found");
         }
         [HttpPost]
@@ -72,10 +71,7 @@ namespace APDotNetTrainingBatch4.RestApi.Controllers
             if (item == null)
             {
                 return NotFound("No data Found");
-            }
-            SqlConnection connection = new SqlConnection(ConnectionStrings.SqlConnectionStringBuilder.ConnectionString);
-            connection.Open();
-
+            }            
             string query = @"UPDATE[dbo].[Tbl_Blog]
                              SET[BlogTitle] = @BlogTitle
                                   ,[BlogAuthor] = @BlogAuthor
@@ -83,14 +79,12 @@ namespace APDotNetTrainingBatch4.RestApi.Controllers
                               WHERE BlogId = @BlogId";
 
             blog.BlogId = id;
-            SqlCommand cmd = new SqlCommand(query, connection);
-            cmd.Parameters.AddWithValue("@BlogId", blog.BlogId);
-            cmd.Parameters.AddWithValue("@BlogTitle", blog.BlogTitle);
-            cmd.Parameters.AddWithValue("@BlogAuthor", blog.BlogAuthor);
-            cmd.Parameters.AddWithValue("@BlogContent", blog.BlogContent);
-
-            int result = cmd.ExecuteNonQuery();
-            connection.Close();
+            int result = _adoDotNetService.Execute(query, 
+                new AdoDotNetRequestParameter("@BlogId", blog.BlogId),
+                new AdoDotNetRequestParameter("@BlogTitle", blog.BlogTitle),
+                new AdoDotNetRequestParameter("@BlogAuthor", blog.BlogAuthor),
+                new AdoDotNetRequestParameter("@BlogContent", blog.BlogContent)
+                );           
             string message = result > 0 ? "Update Successful" : "Update Failed";
             return Ok(message);
         }
@@ -101,10 +95,7 @@ namespace APDotNetTrainingBatch4.RestApi.Controllers
             if (item == null)
             {
                 return NotFound("No data Found");
-            }
-            SqlConnection connection = new SqlConnection(ConnectionStrings.SqlConnectionStringBuilder.ConnectionString);
-            connection.Open();
-
+            }           
             string conditions = string.Empty;
 
             if (!string.IsNullOrEmpty(blog.BlogTitle))
@@ -126,25 +117,28 @@ namespace APDotNetTrainingBatch4.RestApi.Controllers
             }
             conditions = conditions.Substring(0, conditions.Length - 2);
             blog.BlogId = id;
+
             string query = $@"UPDATE [dbo].[Tbl_Blog] SET {conditions} WHERE BlogId = @BlogId";
 
-            SqlCommand cmd = new SqlCommand(query, connection);
-            cmd.Parameters.AddWithValue("@BlogId", blog.BlogId);
-            
+            List<AdoDotNetRequestParameter> parametersLst = new List<AdoDotNetRequestParameter>();
+            parametersLst.Add(new AdoDotNetRequestParameter("@BlogId", blog.BlogId));
+
             if (!string.IsNullOrEmpty(blog.BlogTitle))
             {
-                cmd.Parameters.AddWithValue("@BlogTitle", blog.BlogTitle);
+                parametersLst.Add(new AdoDotNetRequestParameter("@BlogTitle", blog.BlogTitle));
             }
             if (!string.IsNullOrEmpty(blog.BlogAuthor))
             {
-                cmd.Parameters.AddWithValue("@BlogAuthor", blog.BlogAuthor);
+                parametersLst.Add(new AdoDotNetRequestParameter("@BlogAuthor", blog.BlogAuthor));
             }
             if (!string.IsNullOrEmpty(blog.BlogContent))
             {
-                cmd.Parameters.AddWithValue("@BlogContent", blog.BlogContent);
+                parametersLst.Add(new AdoDotNetRequestParameter("@BlogContent", blog.BlogContent));
+
             }
-            int result = cmd.ExecuteNonQuery();
-            connection.Close();
+            
+            int result = _adoDotNetService.Execute(query, parametersLst.ToArray()); 
+            
             string message = result > 0 ? "Update Successful" : "Update Failed";
             return Ok(message);
         }
@@ -156,42 +150,18 @@ namespace APDotNetTrainingBatch4.RestApi.Controllers
             {
                 return NotFound("No data Found");
             }
-            SqlConnection connection = new SqlConnection(ConnectionStrings.SqlConnectionStringBuilder.ConnectionString);
-            connection.Open();
-
             string query = @"DELETE FROM [dbo].[Tbl_Blog]
                              WHERE BlogId = @BlogId";
-            SqlCommand cmd = new SqlCommand(query, connection);
-            cmd.Parameters.AddWithValue("@BlogId", id);
-            int result = cmd.ExecuteNonQuery();
-            connection.Close();
+            int result = _adoDotNetService.Execute(query,new AdoDotNetRequestParameter("@BlogId", id));
+            
             string message = result > 0 ? "Delete Successful" : "Delete Failed";
             Console.WriteLine(message);
             return Ok(message);
         }
         private BlogModel? FindById(int id)
         {
-            string query = "Select * from tbl_blog where blogid = @BlogId";
-            SqlConnection connection = new SqlConnection(ConnectionStrings.SqlConnectionStringBuilder.ConnectionString);
-
-            connection.Open();
-
-            SqlCommand cmd = new SqlCommand(query, connection);
-            cmd.Parameters.AddWithValue("@BlogId", id);
-            SqlDataAdapter sqlDataAdapter = new SqlDataAdapter(cmd);
-            DataTable dt = new DataTable();
-            sqlDataAdapter.Fill(dt);
-
-            connection.Close();
-            var item = new BlogModel();
-            if (dt.Rows.Count > 0)
-            {
-                DataRow dr = dt.Rows[0];
-                item.BlogId = Convert.ToInt32(dr["BlogId"]);
-                item.BlogTitle = Convert.ToString(dr["BlogTitle"]);
-                item.BlogAuthor = Convert.ToString(dr["BlogAuthor"]);
-                item.BlogContent = Convert.ToString(dr["BlogContent"]); 
-            }
+            string query = "Select * from tbl_blog where blogid = @BlogId";  
+            var item = _adoDotNetService.QueryFirstOrDefault<BlogModel>(query, new AdoDotNetRequestParameter("@BlogId", id));
             return item;
         }
     }

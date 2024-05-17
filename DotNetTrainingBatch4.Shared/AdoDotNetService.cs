@@ -2,6 +2,7 @@
 using System.Data;
 using Newtonsoft.Json;
 using System.Reflection.Metadata;
+using System.Reflection.Metadata.Ecma335;
 
 namespace APDotNetTrainingBatch4.Shared
 {
@@ -46,7 +47,7 @@ namespace APDotNetTrainingBatch4.Shared
             List<T> lst = JsonConvert.DeserializeObject<List<T>>(json)!; //Json to C#
             return lst;
         }
-        public T QueryFirstOrDefault<T>(string query, params AdoDotNetRequestParameter[]? parameters)
+        public T? QueryFirstOrDefault<T>(string query, params AdoDotNetRequestParameter[]? parameters)
         {
             SqlConnection connection = new SqlConnection(_connectionString);
             connection.Open();
@@ -78,7 +79,8 @@ namespace APDotNetTrainingBatch4.Shared
             connection.Close();
             string json = JsonConvert.SerializeObject(dt); //C# to Json
             List<T> lst = JsonConvert.DeserializeObject<List<T>>(json)!; //Json to C#
-            return lst[0];
+            
+            return lst.Count > 0 ? lst[0] : default(T);
         }
         public int Execute(string query, params AdoDotNetRequestParameter[]? parameters)
         {
@@ -100,14 +102,6 @@ namespace APDotNetTrainingBatch4.Shared
 
             return result;
         }
-
-        //private BlogModel? FindById(int id)
-        //{
-        //    string query = "Select * from tbl_blog where blogid = @BlogId";
-        //    SqlConnection connection = new SqlConnection(ConnectionStrings.SqlConnectionStringBuilder.ConnectionString);
-
-        //}
-
         public class AdoDotNetRequestParameter
         {
             public AdoDotNetRequestParameter() { }
