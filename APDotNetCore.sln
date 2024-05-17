@@ -16,6 +16,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DotNetTrainingBatch4.Shared
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "APDotNetTrainingBatch4.RestApiWithNLayer", "APDotNetTrainingBatch4.RestApiWithNLayer\APDotNetTrainingBatch4.RestApiWithNLayer.csproj", "{16A53695-C948-4913-A04B-ECB6A3C58D9E}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "APDotNetTrainingBatch4.ConsoleAppHttpClient", "APDotNetTrainingBatch4.ConsoleAppHttpClient\APDotNetTrainingBatch4.ConsoleAppHttpClient.csproj", "{2A5D1AE4-6152-4E4C-BC7C-DE229BD53B25}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -38,6 +40,10 @@ Global
 		{16A53695-C948-4913-A04B-ECB6A3C58D9E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{16A53695-C948-4913-A04B-ECB6A3C58D9E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{16A53695-C948-4913-A04B-ECB6A3C58D9E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2A5D1AE4-6152-4E4C-BC7C-DE229BD53B25}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2A5D1AE4-6152-4E4C-BC7C-DE229BD53B25}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2A5D1AE4-6152-4E4C-BC7C-DE229BD53B25}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2A5D1AE4-6152-4E4C-BC7C-DE229BD53B25}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
