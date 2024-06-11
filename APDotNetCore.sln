@@ -18,7 +18,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "APDotNetTrainingBatch4.Rest
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "APDotNetTrainingBatch4.ConsoleAppHttpClient", "APDotNetTrainingBatch4.ConsoleAppHttpClient\APDotNetTrainingBatch4.ConsoleAppHttpClient.csproj", "{2A5D1AE4-6152-4E4C-BC7C-DE229BD53B25}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DotNetTrainingBatch4.PizzaApi", "DotNetTrainingBbatch4.PizzaApi\DotNetTrainingBatch4.PizzaApi.csproj", "{78E546F8-DA8E-41AA-B3BB-1FDF94E556CE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DotNetTrainingBatch4.PizzaApi", "DotNetTrainingBbatch4.PizzaApi\DotNetTrainingBatch4.PizzaApi.csproj", "{78E546F8-DA8E-41AA-B3BB-1FDF94E556CE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "APDotNetTrainingBath4.ConsoleAppRefitExamples", "APDotNetTrainingBath4.ConsoleAppRefitExample\APDotNetTrainingBath4.ConsoleAppRefitExamples.csproj", "{422318F2-53A0-48B9-9548-B87A0CA0EAE4}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -50,6 +52,10 @@ Global
 		{78E546F8-DA8E-41AA-B3BB-1FDF94E556CE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{78E546F8-DA8E-41AA-B3BB-1FDF94E556CE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{78E546F8-DA8E-41AA-B3BB-1FDF94E556CE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{422318F2-53A0-48B9-9548-B87A0CA0EAE4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{422318F2-53A0-48B9-9548-B87A0CA0EAE4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{422318F2-53A0-48B9-9548-B87A0CA0EAE4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{422318F2-53A0-48B9-9548-B87A0CA0EAE4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
