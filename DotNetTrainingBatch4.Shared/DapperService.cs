@@ -6,13 +6,13 @@ namespace DotNetTrainingBatch4.Shared
 {
     public class DapperService
     {
-        private readonly string _connectionstring;
+        private readonly string _connectionString;
         public DapperService(string connectionString) { 
-            _connectionstring = connectionString;
+            _connectionString = connectionString;
         }
         public List<T> Query<T>(string query, object? param  = null)
         {
-            using IDbConnection db = new SqlConnection(_connectionstring);
+            using IDbConnection db = new SqlConnection(_connectionString);
             //passing param case: if(param !=null) => include param , 
             //query line can do both for that condition
             var lst = db.Query<T>(query, param).ToList();
@@ -20,7 +20,7 @@ namespace DotNetTrainingBatch4.Shared
         }
         public T QueryFirstOrDefault<T>(string query, object? param = null)
         {
-            using IDbConnection db = new SqlConnection(_connectionstring);
+            using IDbConnection db = new SqlConnection(_connectionString);
             //passing param case: if(param !=null) => include param , 
             //query line can do both for that condition
             var item = db.Query<T>(query, param).FirstOrDefault();
@@ -28,7 +28,7 @@ namespace DotNetTrainingBatch4.Shared
         }
         public int Execute(string query, object? param = null)
         {
-            using IDbConnection db = new SqlConnection(_connectionstring);
+            using IDbConnection db = new SqlConnection(_connectionString);
             //Can't check the value after execute
             //return db.Execute(query, param);
             var result = db.Execute(query, param);

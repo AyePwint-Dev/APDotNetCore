@@ -1,0 +1,12 @@
+{
+  "profiles": {
+    "APDotNetCoreConsoleApp": {
+      "commandName": "Project",
+      "launchBrowser": true,
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Development"
+      },
+      "applicationUrl": "https://localhost:50062;http://localhost:50065"
+    }
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "profiles": {
+    "DotNetTrainingBatch4.Shared": {
+      "commandName": "Project",
+      "launchBrowser": true,
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Development"
+      },
+      "applicationUrl": "https://localhost:50061;http://localhost:50063"
+    }
+  }
+}

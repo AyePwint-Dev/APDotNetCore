@@ -67,3 +67,30 @@ public class PizzaOrderDetailModel
     public string PizzaOrderInvoiceNo { get; set; }
     public int PizzaExtraId { get; set; }
 }
+public class PizzaOrderInvoiceHeadModel
+{
+    [Key]
+    public int PizzaOrderId { get; set; }
+    public string PizzaOrderInvoiceNo { get; set; }
+    public int PizzaId { get; set; }
+    public decimal TotalAmount { get; set; }
+    public string Pizza { get; set; } //need to same with Tbl column name, ** aware of property 'Type'
+    public decimal Price { get; set; }
+}
+public class PizzaOrderInvoiceDetailModel
+{
+    [Key]
+    public int PizzaOrderDetailId { get; set; }
+    public string PizzaOrderInvoiceNo { get; set; }
+    public int PizzaExtraId { get; set; }
+    public string PizzaExtraName { get; set; }
+    [Column("Price")]
+    public decimal Price { get; set; }
+    [NotMapped]
+    public string PriceStr { get { return "$ " + Price; } }
+}
+public class PizzaOrderInvoiceResponse
+{
+    public PizzaOrderInvoiceHeadModel Order { get; set; }
+    public List<PizzaOrderInvoiceDetailModel> OrderDetail { get; set; } 
+}
