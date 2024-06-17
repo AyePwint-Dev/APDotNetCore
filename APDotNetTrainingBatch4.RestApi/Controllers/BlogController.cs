@@ -12,12 +12,19 @@ namespace APDotNetTrainingBatch4.RestApi.Controllers
     [ApiController]
     public class BlogController : ControllerBase
     {
+        //private readonly AppDbContext _context;
+
+        //public BlogController()
+        //{
+        //    _context = new AppDbContext();
+        //}
         private readonly AppDbContext _context;
 
-        public BlogController()
+        public BlogController(AppDbContext appDbContext)
         {
-            _context = new AppDbContext();
+            _context = appDbContext;
         }
+
         [HttpGet]
         public IActionResult Read()
         {

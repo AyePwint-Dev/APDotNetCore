@@ -12,8 +12,16 @@ namespace APDotNetTrainingBatch4.RestApi.Controllers
     [ApiController]
     public class BlogDapper2Controller : ControllerBase
     {
-        private readonly DapperService _dapperService = new DapperService(ConnectionStrings.SqlConnectionStringBuilder.ConnectionString);
+        //private readonly DapperService _dapperService = new DapperService(ConnectionStrings.SqlConnectionStringBuilder.ConnectionString);
         //Read
+
+        private readonly DapperService _dapperService;
+
+        public BlogDapper2Controller(DapperService dappperService)
+        {
+            _dapperService = dappperService;
+        }
+
         [HttpGet]
         public IActionResult GetBlogs()
         {
