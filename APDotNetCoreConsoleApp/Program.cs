@@ -1,4 +1,5 @@
 ﻿using APDotNetCoreConsoleApp.AdoDotNetExamples;
+using APDotNetCoreConsoleApp.DapperExamples;
 using APDotNetCoreConsoleApp.EFCoreExamples;
 using APDotNetCoreConsoleApp.Services;
 using Microsoft.EntityFrameworkCore;
@@ -69,12 +70,24 @@ Console.WriteLine("Hello, World!");
 //Console.ReadKey();
 
 var connectionString = ConnectionStrings.SqlConnectionStringBuilder.ConnectionString;
+var sqlConnectionStringBuilder = new SqlConnectionStringBuilder(connectionString);
+
+
 var serviceProvider = new ServiceCollection()
+    .AddScoped<AdoDotNetExample>(n => new AdoDotNetExample(sqlConnectionStringBuilder))
+    .AddScoped<DapperExample>(n => new DapperExample(sqlConnectionStringBuilder))
     .AddDbContext<AppDbContext>(opt =>
     {
         opt.UseSqlServer(connectionString);       
     })
-    .BuilderServiceProvider();
+    .AddScoped<EFCoreExample>()
+    .BuildServiceProvider();
 
-AppDbContext db = serviceProvider.GetRequiredService<AppDbContext>();
+//AppDbContext db = serviceProvider.GetRequiredService<AppDbContext>();
+var adoDotNnetExample = serviceProvider.GetRequiredService<AdoDotNetExample>();
+adoDotNnetExample.Read();
+
+var dapperExample = serviceProvider.GetRequiredService<DapperExample>();
+dapperExample.Run();
+
 Console.ReadLine();

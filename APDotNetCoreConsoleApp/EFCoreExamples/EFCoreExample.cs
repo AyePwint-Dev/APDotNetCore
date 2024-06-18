@@ -10,7 +10,14 @@ namespace APDotNetCoreConsoleApp.EFCoreExamples
 {
     internal class EFCoreExample
     {
-        private readonly AppDbContext db = new AppDbContext(); //not modified and create db
+        //private readonly AppDbContext db = new AppDbContext(); //not modified and create db
+        
+        private readonly AppDbContext db;
+        public EFCoreExample(AppDbContext db)
+        {
+            this.db = db;
+        }
+
         public void Run()
         {
             //Read();
