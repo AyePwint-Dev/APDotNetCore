@@ -19,6 +19,9 @@ namespace APDotNetTrainingBatch4.MvcChartApp.Controllers
         public IActionResult SpLineChart() {
             return View();
         }
+        public IActionResult ScatterBubbleChart() {
+            return View();
+        }
 
     }
 }
