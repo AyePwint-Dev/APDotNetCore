@@ -28,9 +28,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "APDotNetTrainingBatch4.Mini
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "APDotNetTrainingBatch4.MvcApp2", "APDotNetTrainingBatch4.MvcApp2\APDotNetTrainingBatch4.MvcApp2.csproj", "{C2FFCFCF-92DE-4F2A-BE13-B64887E2ECA3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "APDotNetTrainingBatch4.MvcChartApp", "APDotNetTrainingBatch4.MvcChartApp\APDotNetTrainingBatch4.MvcChartApp.csproj", "{71BEE842-C16D-4436-8E7C-B35D2A2E2ADC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "APDotNetTrainingBatch4.MvcChartApp", "APDotNetTrainingBatch4.MvcChartApp\APDotNetTrainingBatch4.MvcChartApp.csproj", "{71BEE842-C16D-4436-8E7C-B35D2A2E2ADC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "APDotNetTrainingBath4.ConsoleAppLogging", "APDotNetTrainingBath4.ConsoleAppLogging\APDotNetTrainingBath4.ConsoleAppLogging.csproj", "{4236223B-ED98-425D-BFBB-3516225B1D17}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "APDotNetTrainingBath4.ConsoleAppLogging", "APDotNetTrainingBath4.ConsoleAppLogging\APDotNetTrainingBath4.ConsoleAppLogging.csproj", "{4236223B-ED98-425D-BFBB-3516225B1D17}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "APDotNetTrainingBatch4.RealtimeChartApp", "APDotNetTrainingBatch4.RealtimeChartApp\APDotNetTrainingBatch4.RealtimeChartApp.csproj", "{25C5011E-1F5E-4FC4-92BF-54462F3205D6}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -86,6 +88,10 @@ Global
 		{4236223B-ED98-425D-BFBB-3516225B1D17}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4236223B-ED98-425D-BFBB-3516225B1D17}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4236223B-ED98-425D-BFBB-3516225B1D17}.Release|Any CPU.Build.0 = Release|Any CPU
+		{25C5011E-1F5E-4FC4-92BF-54462F3205D6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{25C5011E-1F5E-4FC4-92BF-54462F3205D6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{25C5011E-1F5E-4FC4-92BF-54462F3205D6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{25C5011E-1F5E-4FC4-92BF-54462F3205D6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
