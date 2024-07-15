@@ -1,4 +1,5 @@
 using Serilog;
+using Serilog.Sinks.MSSqlServer;
 
 string filePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "logs/APDotNetTrainingBath4.MvcChartApp.log");
 
@@ -6,7 +7,15 @@ string filePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "logs/APDo
 Log.Logger = new LoggerConfiguration()
 	.WriteTo.Console()
 	.WriteTo.File(filePath, rollingInterval: RollingInterval.Hour)
-	.CreateLogger();
+	.WriteTo
+    .MSSqlServer(
+        connectionString: "Server=.;Database=DotNetTrainingBatch4;User ID=sa;Password=12345;TrustServerCertificate = true",
+        sinkOptions: new MSSqlServerSinkOptions 
+		{ 
+			TableName = "Tbl_LogEvents",
+			AutoCreateSqlTable = true 
+		})
+    .CreateLogger();
 //Save in local logs folder
 //Log.Logger = new LoggerConfiguration()
 //	.WriteTo.Console()
