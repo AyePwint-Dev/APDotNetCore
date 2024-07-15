@@ -30,6 +30,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "APDotNetTrainingBatch4.MvcA
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "APDotNetTrainingBatch4.MvcChartApp", "APDotNetTrainingBatch4.MvcChartApp\APDotNetTrainingBatch4.MvcChartApp.csproj", "{71BEE842-C16D-4436-8E7C-B35D2A2E2ADC}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "APDotNetTrainingBath4.ConsoleAppLogging", "APDotNetTrainingBath4.ConsoleAppLogging\APDotNetTrainingBath4.ConsoleAppLogging.csproj", "{4236223B-ED98-425D-BFBB-3516225B1D17}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -80,6 +82,10 @@ Global
 		{71BEE842-C16D-4436-8E7C-B35D2A2E2ADC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{71BEE842-C16D-4436-8E7C-B35D2A2E2ADC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{71BEE842-C16D-4436-8E7C-B35D2A2E2ADC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4236223B-ED98-425D-BFBB-3516225B1D17}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4236223B-ED98-425D-BFBB-3516225B1D17}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4236223B-ED98-425D-BFBB-3516225B1D17}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4236223B-ED98-425D-BFBB-3516225B1D17}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
